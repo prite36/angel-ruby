@@ -8,6 +8,7 @@ table
       th Pitch deck url
       th Amount raised
       th Published
+      th User
       th
       th
       th
@@ -20,6 +21,7 @@ table
         td = pitch.pitch_deck_url
         td = pitch.amount_raised
         td = pitch.published
+        td = pitch.user ? pitch.user.email : nil
         td = link_to 'Show', pitch
         td = link_to 'Edit', edit_pitch_path(pitch)
         td = link_to 'Destroy', pitch, data: { confirm: 'Are you sure?' }, method: :delete

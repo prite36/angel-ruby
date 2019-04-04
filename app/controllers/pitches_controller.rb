@@ -1,10 +1,11 @@
 class PitchesController < ApplicationController
   before_action :set_pitch, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /pitches
   # GET /pitches.json
   def index
-    @pitches = Pitch.all
+    @pitches = Pitch.where(user_id: current_user)
   end
 
   # GET /pitches/1
@@ -25,6 +26,8 @@ class PitchesController < ApplicationController
   # POST /pitches.json
   def create
     @pitch = Pitch.new(pitch_params)
+
+    @pitch.user = current_user
 
     respond_to do |format|
       if @pitch.save
