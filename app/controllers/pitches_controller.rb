@@ -1,11 +1,13 @@
 class PitchesController < ApplicationController
   before_action :set_pitch, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  after_action :verify_authorized
 
   # GET /pitches
   # GET /pitches.json
   def index
     @pitches = Pitch.where(user_id: current_user)
+    authorize @pitches
   end
 
   # GET /pitches/1
@@ -16,16 +18,19 @@ class PitchesController < ApplicationController
   # GET /pitches/new
   def new
     @pitch = Pitch.new
+    authorize @pitch
   end
 
   # GET /pitches/1/edit
   def edit
+    authorize @pitch
   end
 
   # POST /pitches
   # POST /pitches.json
   def create
     @pitch = Pitch.new(pitch_params)
+    authorize @pitch
 
     @pitch.user = current_user
 
@@ -43,6 +48,7 @@ class PitchesController < ApplicationController
   # PATCH/PUT /pitches/1
   # PATCH/PUT /pitches/1.json
   def update
+    authorize @pitch
     respond_to do |format|
       if @pitch.update(pitch_params)
         format.html { redirect_to @pitch, notice: 'Pitch was successfully updated.' }
@@ -57,6 +63,7 @@ class PitchesController < ApplicationController
   # DELETE /pitches/1
   # DELETE /pitches/1.json
   def destroy
+    authorize @pitch
     @pitch.destroy
     respond_to do |format|
       format.html { redirect_to pitches_url, notice: 'Pitch was successfully destroyed.' }
