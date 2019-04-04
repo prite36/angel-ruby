@@ -7,4 +7,7 @@ class Pitch < ApplicationRecord
 
     # Associations
     belongs_to :user
+
+    # Associate visits with the model
+    visitable :ahoy_visit
 end
