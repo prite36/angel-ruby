@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_name: MyString
+  description: MyText
+  pitch_deck_url: MyString
+  amount_raised: 1
+  published: false
+
+two:
+  company_name: MyString
+  description: MyText
+  pitch_deck_url: MyString
+  amount_raised: 1
+  published: false

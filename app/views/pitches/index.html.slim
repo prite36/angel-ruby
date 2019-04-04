@@ -1,0 +1,29 @@
+h1 Listing pitches
+
+table
+  thead
+    tr
+      th Company name
+      th Description
+      th Pitch deck url
+      th Amount raised
+      th Published
+      th
+      th
+      th
+
+  tbody
+    - @pitches.each do |pitch|
+      tr
+        td = pitch.company_name
+        td = pitch.description
+        td = pitch.pitch_deck_url
+        td = pitch.amount_raised
+        td = pitch.published
+        td = link_to 'Show', pitch
+        td = link_to 'Edit', edit_pitch_path(pitch)
+        td = link_to 'Destroy', pitch, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Pitch', new_pitch_path

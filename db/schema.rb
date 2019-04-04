@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_04_032954) do
+ActiveRecord::Schema.define(version: 2019_04_04_040219) do
+
+  create_table "pitches", force: :cascade do |t|
+    t.string "company_name"
+    t.text "description"
+    t.string "pitch_deck_url"
+    t.integer "amount_raised"
+    t.boolean "published", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
