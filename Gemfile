@@ -42,6 +42,8 @@ gem 'slim-rails'
 gem 'devise'
 # Make form easier with simple_form
 gem 'simple_form'
+# Letter opener for intercepting emails
+gem 'letter_opener'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
